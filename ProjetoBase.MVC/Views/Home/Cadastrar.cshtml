@@ -1,0 +1,19 @@
+﻿@model ProjetoBase.MVC.Models.ProdutoViewModel
+
+<h2>Cadastrar Produto</h2>
+
+<form asp-action="Cadastrar" method="post">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Preco"></label>
+        <input asp-for="Preco" class="form-control" />
+        <span asp-validation-for="Preco" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Salvar</button>
+</form>

@@ -1,0 +1,52 @@
+﻿﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    .login-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 90vh;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 450px;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="login-wrapper">
+    <div class="login-container">
+        <h3 class="text-center mb-4">Registre-se</h3>
+        <form asp-controller="Home" asp-action="Registrar" method="post" onsubmit="return validarSenhas()">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input name="nome" type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input name="Email" type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input name="Password" type="password" class="form-control" id="password" placeholder="Digite sua senha" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme sua senha" required>
+            </div>
+            <div id="senhaErro" class="text-danger mb-3" style="display:none;">As senhas não coincidem.</div>
+            <button type="submit" class="btn btn-primary w-100">Registre-se</button>
+        </form>
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger mt-3">@ViewData["ErrorMessage"]</div>
+        }
+    </div>
+</div>

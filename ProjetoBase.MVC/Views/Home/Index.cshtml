@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProjetoBase.MVC.Models.ProdutoViewModel>
+
+<h2>Lista de Produtos</h2>
+
+@if (Context.Session.GetString("AuthToken") != null)
+{
+    <a asp-action="Cadastrar" class="btn btn-primary">Novo Produto</a>
+}
+
+<br />
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            @if (Context.Session.GetString("AuthToken") != null)
+            {
+                <th>Ações</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>@produto.Preco.ToString("C")</td>
+                @if (Context.Session.GetString("AuthToken") != null)
+                {
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@produto.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-action="Deletar" asp-route-id="@produto.Id" class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
