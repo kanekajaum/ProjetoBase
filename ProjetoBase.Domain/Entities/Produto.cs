@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace ProjetoBase.Domain.Entities
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Preco { get; private set; }
 
         public Produto(string nome, decimal preco)
